@@ -40,14 +40,17 @@ export const Review = ({ checkoutData, prevStep }: ReviewProps) => {
 
             console.log("Order data to be sent to API:", orderData);
 
-            const fetchResult = await fetch("/api/orders/checkout", {
-                body: JSON.stringify(orderData),
-                credentials: "include",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                method: "POST",
-            });
+            const fetchResult = await fetch(
+                `${process.env.NEXT_PUBLIC_SERVER_URL}/api/orders/checkout`,
+                {
+                    body: JSON.stringify(orderData),
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    method: "POST",
+                }
+            );
 
             if (!fetchResult.ok) {
                 throw new Error("Failed to create order");
