@@ -11,7 +11,7 @@ import MedusaRadio from "../radio";
 
 import Divider from "../divider";
 import ErrorMessage from "./error-message";
-import { convertToLocale } from "../../utils/money";
+import { convertToLocale } from "@/utils/money";
 
 const PICKUP_OPTION_ON = "__PICKUP_ON";
 const PICKUP_OPTION_OFF = "__PICKUP_OFF";

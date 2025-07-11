@@ -4,7 +4,7 @@ import { Button } from "@medusajs/ui";
 import Link from "next/link";
 import { useMemo } from "react";
 
-import { convertToLocale } from "../utils/money";
+import { convertToLocale } from "@/utils/money";
 import Thumbnail from "./thumbnail";
 
 type OrderCardProps = {

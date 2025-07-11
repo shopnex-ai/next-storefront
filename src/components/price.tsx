@@ -1,6 +1,6 @@
 import { clx, Text } from "@medusajs/ui";
 
-import { convertToLocale } from "../utils/money";
+import { convertToLocale } from "@/utils/money";
 
 export default function PreviewPrice({
     currency,

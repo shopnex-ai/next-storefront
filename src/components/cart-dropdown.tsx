@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useCart } from "react-use-cart";
 
-import { convertToLocale } from "../utils/money";
+import { convertToLocale } from "@/utils/money";
 import DeleteButton from "./delete-button";
 import LineItemOptions from "./line-item-options";
 import LineItemPrice from "./line-item-price";

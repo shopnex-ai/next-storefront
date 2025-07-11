@@ -61,7 +61,7 @@ export const getOrder = async (orderId: string) => {
             },
         });
 
-        if (!order.docs.length) {
+        if (!order.docs?.length) {
             return null;
         }
 

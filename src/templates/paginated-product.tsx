@@ -1,6 +1,6 @@
 import type { Product } from "@shopnex/types";
 
-import type { SortOptions } from "../../utils/sort-options";
+import type { SortOptions } from "@/utils/sort-options";
 
 import { Pagination } from "@/components/pagination";
 import ProductPreview from "@/components/product-preview";

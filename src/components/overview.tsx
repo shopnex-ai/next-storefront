@@ -6,7 +6,7 @@ import { Container } from "@medusajs/ui";
 import Link from "next/link";
 
 import { useAuth } from "@/providers/auth";
-import { convertToLocale } from "../utils/money";
+import { convertToLocale } from "@/utils/money";
 import ChevronDown from "./icons/chevron-down";
 
 type OverviewProps = {

@@ -5,7 +5,7 @@ import React, { useActionState } from "react";
 import { SubmitButton } from "./submit-button";
 import ErrorMessage from "./error-message";
 import Trash from "../icons/trash";
-import { convertToLocale } from "../../utils/money";
+import { convertToLocale } from "@/utils/money";
 
 type DiscountCodeProps = {
     cart: {

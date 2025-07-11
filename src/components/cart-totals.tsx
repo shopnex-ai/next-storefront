@@ -4,7 +4,7 @@ import type { Order } from "@shopnex/types";
 
 import React from "react";
 
-import { convertToLocale } from "../utils/money";
+import { convertToLocale } from "@/utils/money";
 
 const CartTotals = ({ order }: { order: Order }) => {
     const taxTotal = 0;

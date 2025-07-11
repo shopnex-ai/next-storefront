@@ -1,6 +1,6 @@
 import { clx } from "@medusajs/ui";
 
-import { convertToLocale } from "../utils/money";
+import { convertToLocale } from "@/utils/money";
 
 export const getPercentageDiff = (original: number, calculated: number) => {
     const diff = original - calculated;

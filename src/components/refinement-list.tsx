@@ -3,9 +3,9 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 
-import type { SortOptions } from "../utils/sort-options";
+import type { SortOptions } from "@/utils/sort-options";
 
-import SortProducts from "../utils/sort-options";
+import SortProducts from "@/utils/sort-options";
 
 type RefinementListProps = {
     "data-testid"?: string;

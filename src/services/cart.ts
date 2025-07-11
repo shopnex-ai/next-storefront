@@ -1,4 +1,5 @@
 import { payloadSdk } from "@/utils/payload-sdk";
+import { Cart } from "@shopnex/types";
 
 export const setAddresses = (cartId: string, addresses: any) => {
     return null;
@@ -27,8 +28,8 @@ export async function createCart(item: {
     id: string;
     productId: number;
     quantity: number;
-}) {
-    await payloadSdk.create({
+}): Promise<Cart> {
+    const cart = await payloadSdk.create({
         collection: "carts",
         data: {
             cartItems: [
@@ -40,6 +41,7 @@ export async function createCart(item: {
             ],
         },
     });
+    return cart;
 }
 
 export async function updateCart(item: { id: string; quantity: number }) {

@@ -1,4 +1,3 @@
-import { payloadSdk } from "@/utils/payload-sdk";
 import { Button } from "@medusajs/ui";
 import { useState } from "react";
 import { useCart } from "react-use-cart";
@@ -47,6 +46,8 @@ export const Review = ({ checkoutData, prevStep }: ReviewProps) => {
                     credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
+                        "x-shop-handle": process.env.NEXT_PUBLIC_SHOP_HANDLE!,
+                        "x-shop-id": process.env.NEXT_PUBLIC_SHOP_ID!,
                     },
                     method: "POST",
                 }
