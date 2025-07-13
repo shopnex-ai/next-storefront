@@ -6,15 +6,19 @@ export const mapProducts = (products: Product[]) => {
             return {
                 ...product,
                 variants: product.variants?.map((variant) => {
-                    const imageUrl =
+                    let imageUrl =
                         variant.imageUrl ||
                         (typeof variant.gallery?.[0] === "object"
                             ? variant.gallery[0].url
                             : undefined);
-                    const formattedImageUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}${imageUrl}`;
+
+                    if (!imageUrl?.includes("http")) {
+                        imageUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}${imageUrl}`;
+                    }
+
                     return {
                         ...variant,
-                        imageUrl: formattedImageUrl,
+                        imageUrl,
                     };
                 }),
             };

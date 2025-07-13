@@ -41,7 +41,7 @@ const Items = ({ order }: ItemsProps) => {
                             <Item
                                 currencyCode={"usd"}
                                 item={item as any}
-                                key={item.vid}
+                                key={item.id}
                             />
                         );
                     })}

@@ -1,8 +1,7 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@medusajs/ui";
 import { useState } from "react";
 import { useCart } from "react-use-cart";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface ReviewProps {
     checkoutData: any;
@@ -44,11 +43,6 @@ export const Review = ({ checkoutData, prevStep }: ReviewProps) => {
                 {
                     body: JSON.stringify(orderData),
                     credentials: "include",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "x-shop-handle": process.env.NEXT_PUBLIC_SHOP_HANDLE!,
-                        "x-shop-id": process.env.NEXT_PUBLIC_SHOP_ID!,
-                    },
                     method: "POST",
                 }
             );

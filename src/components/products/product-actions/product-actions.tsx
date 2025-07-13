@@ -170,8 +170,8 @@ export default function ProductActions({
                 {!allOptionsSelected
                     ? "Select variant"
                     : isOutOfStock
-                    ? "Out of stock"
-                    : "Add to cart"}
+                      ? "Out of stock"
+                      : "Add to cart"}
             </Button>
         </div>
     );

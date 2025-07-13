@@ -111,7 +111,6 @@ export const PaymentForm = ({
                                 const selectedMethod = paymentMethods.find(
                                     (m) => m.id === value
                                 );
-                                debugger;
                                 updatePaymentData(
                                     "method",
                                     selectedMethod?.label || ""
