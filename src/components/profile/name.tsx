@@ -54,7 +54,7 @@ const ProfileName: React.FC<MyInformationProps> = ({
         <form action={formAction} className="w-full overflow-visible">
             <AccountInfo
                 clearState={clearState}
-                currentInfo={`${customer.firstName} ${customer.lastName}`}
+                currentInfo={`${(customer as any).firstName} ${(customer as any).lastName}`}
                 data-testid="account-name-editor"
                 isError={!!state?.error}
                 isSuccess={successState}
@@ -63,14 +63,14 @@ const ProfileName: React.FC<MyInformationProps> = ({
                 <div className="grid grid-cols-2 gap-x-4">
                     <Input
                         data-testid="first-name-input"
-                        defaultValue={customer.firstName ?? ""}
+                        defaultValue={(customer as any).firstName ?? ""}
                         label="First name"
                         name="first_name"
                         required
                     />
                     <Input
                         data-testid="last-name-input"
-                        defaultValue={customer.lastName ?? ""}
+                        defaultValue={(customer as any).lastName ?? ""}
                         label="Last name"
                         name="last_name"
                         required

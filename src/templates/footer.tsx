@@ -1,9 +1,7 @@
-import { clx, Text } from "@medusajs/ui";
-import Link from "next/link";
-
 import { ShopNexIcon } from "@/components/icons/shopnex-icon";
-import { StyledRichText } from "@/components/styled-rich-text";
 import { payloadSdk } from "@/utils/payload-sdk";
+import { clx } from "@medusajs/ui";
+import Link from "next/link";
 
 export default async function Footer({
     storeSettings,

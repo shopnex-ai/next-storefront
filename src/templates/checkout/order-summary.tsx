@@ -1,11 +1,10 @@
 import type { Item } from "react-use-cart";
 
-import { Info } from "lucide-react";
-import { useCart } from "react-use-cart";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { Info } from "lucide-react";
+import { useCart } from "react-use-cart";
 
 interface CheckoutData {
     delivery: {
@@ -50,7 +49,7 @@ export const OrderSummery = ({
                                     <p className="text-sm text-gray-500">
                                         {item.options
                                             .map(
-                                                (opt) =>
+                                                (opt: any) =>
                                                     `${opt.option}: ${opt.value}`
                                             )
                                             .join(", ")}

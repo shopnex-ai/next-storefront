@@ -1,7 +1,5 @@
 "use client";
 
-import type { StoreSetting } from "@shopnex/types";
-
 import { Popover, PopoverPanel, Transition } from "@headlessui/react";
 import { ArrowRightMini, XMark } from "@medusajs/icons";
 import { clx, Text, useToggleState } from "@medusajs/ui";
@@ -16,7 +14,7 @@ const SideMenuItems = {
     Cart: "/cart",
 };
 
-const SideMenu = ({ storeSettings }: { storeSettings: StoreSetting }) => {
+const SideMenu = ({ storeSettings }: { storeSettings: any }) => {
     const toggleState = useToggleState();
 
     return (

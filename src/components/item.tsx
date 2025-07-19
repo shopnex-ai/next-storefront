@@ -1,5 +1,6 @@
 "use client";
 
+import { updateCart } from "@/services/cart";
 import { clx, Table, Text } from "@medusajs/ui";
 import Link from "next/link";
 import { useState } from "react";
@@ -13,7 +14,6 @@ import LineItemOptions from "./line-item-options";
 import LineItemPrice from "./line-item-price";
 import LineItemUnitPrice from "./line-item-unit-price";
 import Thumbnail from "./thumbnail";
-import { updateCart } from "@/services/cart";
 
 type ItemProps = {
     currencyCode: string;

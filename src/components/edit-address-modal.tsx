@@ -2,11 +2,11 @@
 
 import type React from "react";
 
+import useToggleState from "@/hooks/use-toggle-state";
 import { PencilSquare as Edit, Trash } from "@medusajs/icons";
 import { Button, clx, Heading, Text } from "@medusajs/ui";
 import { useEffect, useState } from "react";
 
-import useToggleState from "@/hooks/use-toggle-state";
 import Spinner from "./icons/spinner";
 import Input from "./input";
 import Modal from "./modal";

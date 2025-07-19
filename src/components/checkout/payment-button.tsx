@@ -1,6 +1,5 @@
 "use client";
 
-import { placeOrder } from "@/services/cart";
 import { Button } from "@medusajs/ui";
 // import { useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useState } from "react";
@@ -30,13 +29,6 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
             return (
                 <StripePaymentButton
                     cart={cart}
-                    data-testid={dataTestId}
-                    notReady={notReady}
-                />
-            );
-        case paymentSession?.provider_id:
-            return (
-                <ManualTestPaymentButton
                     data-testid={dataTestId}
                     notReady={notReady}
                 />
@@ -78,7 +70,7 @@ const StripePaymentButton = ({
 
     // const disabled = !stripe || !elements ? true : false;
 
-    const handlePayment = async () => {
+    const handlePayment = () => {
         setSubmitting(true);
 
         // if (!stripe || !elements || !card || !cart) {

@@ -34,7 +34,7 @@ const ShippingAddress = ({
     });
 
     const countriesInRegion = useMemo(
-        () => cart?.region?.countries?.map((c) => c.iso_2),
+        () => cart?.region?.countries?.map((c: any) => c.iso_2),
         [cart?.region]
     );
 
@@ -42,7 +42,7 @@ const ShippingAddress = ({
     const addressesInRegion = useMemo(
         () =>
             customer?.addresses?.filter(
-                (a) =>
+                (a: any) =>
                     a.country_code &&
                     countriesInRegion?.includes(a.country_code)
             ),
@@ -103,7 +103,7 @@ const ShippingAddress = ({
                         addressInput={
                             mapKeys(formData, (_, key) =>
                                 key.replace("shipping_address.", "")
-                            ) as HttpTypes.StoreCartAddress
+                            ) as any
                         }
                         onSelect={setFormAddress}
                     />
@@ -191,6 +191,7 @@ const ShippingAddress = ({
                 <CheckboxWithLabel
                     checked={checked}
                     data-testid="billing-address-checkbox"
+                    id="same-as-billing"
                     label="Billing address same as shipping address"
                     name="same_as_billing"
                     onChange={onChange}

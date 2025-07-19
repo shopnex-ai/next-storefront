@@ -1,9 +1,8 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { payloadSdk } from "@/utils/payload-sdk";
 import { Button, Label } from "@medusajs/ui";
 import { useEffect, useState } from "react";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 interface PaymentMethod {
     details?: string;
@@ -62,7 +61,7 @@ export const PaymentForm = ({
             }
         };
 
-        fetchPaymentMethods();
+        void fetchPaymentMethods();
     }, []);
 
     const getSelectedMethodDetails = () => {

@@ -1,5 +1,3 @@
-import { Button, Label } from "@medusajs/ui";
-
 import Checkbox from "@/components/checkbox";
 import { Input } from "@/components/ui/input";
 import {
@@ -9,6 +7,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import { Button, Label } from "@medusajs/ui";
 
 export const AddressForm = ({
     checkoutData,
@@ -129,12 +128,7 @@ export const AddressForm = ({
                                     checkoutData.shipping.billingAddressSame
                                 }
                                 id="billingAddressSame"
-                                onCheckedChange={(checked: any) =>
-                                    updateShippingData(
-                                        "billingAddressSame",
-                                        checked as boolean
-                                    )
-                                }
+                                label="Billing address same as shipping address"
                             />
                             <Label htmlFor="billingAddressSame">
                                 Billing address same as shipping address

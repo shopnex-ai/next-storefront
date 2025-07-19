@@ -2,11 +2,11 @@
 
 import type { Order, User } from "@shopnex/types";
 
+import { useAuth } from "@/providers/auth";
+import { convertToLocale } from "@/utils/money";
 import { Container } from "@medusajs/ui";
 import Link from "next/link";
 
-import { useAuth } from "@/providers/auth";
-import { convertToLocale } from "@/utils/money";
 import ChevronDown from "./icons/chevron-down";
 
 type OverviewProps = {
@@ -21,9 +21,9 @@ const Overview = ({ orders }: OverviewProps) => {
                 <div className="text-xl-semi flex justify-between items-center mb-4">
                     <span
                         data-testid="welcome-message"
-                        data-value={customer?.firstName}
+                        data-value={(customer as any)?.firstName}
                     >
-                        Hello {customer?.firstName}
+                        Hello {(customer as any)?.firstName}
                     </span>
                     <span className="text-small-regular text-ui-fg-base">
                         Signed in as:{" "}
@@ -170,7 +170,7 @@ const getProfileCompletion = (customer: null | User) => {
         count++;
     }
 
-    if (customer.firstName && customer.lastName) {
+    if ((customer as any).firstName && (customer as any).lastName) {
         count++;
     }
 

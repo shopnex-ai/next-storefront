@@ -2,16 +2,15 @@
 
 import type { Order } from "@shopnex/types";
 
-import { Heading } from "@medusajs/ui";
-import { useLayoutEffect } from "react";
-import { useCart } from "react-use-cart";
-
 import CartTotals from "@/components/cart-totals";
 import Help from "@/components/help";
 import Items from "@/components/order/items/items";
 import OrderDetails from "@/components/order/order-details/order-details";
 import PaymentDetails from "@/components/order/payment-details/payment-details";
 import ShippingDetails from "@/components/order/shipping-details/shipping-details";
+import { Heading } from "@medusajs/ui";
+import { useLayoutEffect } from "react";
+import { useCart } from "react-use-cart";
 
 type OrderCompletedTemplateProps = {
     order: Order;

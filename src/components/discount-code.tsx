@@ -12,14 +12,14 @@ import { SubmitButton } from "./submit-button";
 
 type DiscountCodeProps = {
     applyPromotion: (code: string) => Promise<void>;
+    cart: any;
     promotions: GiftCard[];
     setPromotions: (promotions: GiftCard[]) => void;
-    cart: any;
 };
 
 export const DiscountCode: React.FC<DiscountCodeProps> = ({
-    cart,
     applyPromotion,
+    cart,
     promotions,
     setPromotions,
 }) => {

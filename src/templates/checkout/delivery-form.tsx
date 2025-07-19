@@ -1,11 +1,10 @@
 import type { Shipping } from "@shopnex/types";
 
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { payloadSdk } from "@/utils/payload-sdk";
 import { Button, Label } from "@medusajs/ui";
 import { Truck } from "lucide-react";
 import { useEffect, useState } from "react";
-
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export const DeliveryForm = ({
     checkoutData,
@@ -31,18 +30,18 @@ export const DeliveryForm = ({
             setDeliveryMethods(data.docs);
             if (
                 data.docs.length > 0 &&
-                data.docs[0].shippingProvider.length > 0
+                (data.docs[0] as any)?.shippingProvider?.length > 0
             ) {
                 const defaultMethod = `${data.docs[0].id}:0`; // Assume the first provider in the first shipping method
                 setSelectedMethod(defaultMethod);
                 updateDeliveryData(
                     "cost",
-                    data.docs[0].shippingProvider[0].baseRate
+                    data.docs[0].shippingProvider?.[0].baseRate
                 );
             }
         };
 
-        fetchDeliveryMethods();
+        void fetchDeliveryMethods();
     }, []);
 
     const renderShippingOptions = () => {

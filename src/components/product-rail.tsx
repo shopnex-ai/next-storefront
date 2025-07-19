@@ -1,8 +1,8 @@
+import { mapProducts } from "@/utils/map-products";
+import { payloadSdk } from "@/utils/payload-sdk";
 import { Text } from "@medusajs/ui";
 
 import InteractiveLink from "./interactive-link";
-import { payloadSdk } from "@/utils/payload-sdk";
-import { mapProducts } from "@/utils/map-products";
 import ProductPreview from "./product-preview";
 
 export default async function ProductRail({ collection }: { collection: any }) {

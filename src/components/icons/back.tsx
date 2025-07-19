@@ -1,6 +1,6 @@
-import React from "react";
-
 import type { IconProps } from "@/types/icon";
+
+import React from "react";
 
 const Back: React.FC<IconProps> = ({
     color = "currentColor",

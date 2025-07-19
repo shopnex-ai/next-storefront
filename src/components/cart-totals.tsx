@@ -2,11 +2,16 @@
 
 import type { Order } from "@shopnex/types";
 
+import { convertToLocale } from "@/utils/money";
 import React from "react";
 
-import { convertToLocale } from "@/utils/money";
-
-const CartTotals = ({ order }: { order: Order }) => {
+const CartTotals = ({
+    currencyCode,
+    order,
+}: {
+    currencyCode: string;
+    order: Partial<Order>;
+}) => {
     const taxTotal = 0;
     const shippingSubtotal = 0;
     const cartTotal = order.totalAmount;
@@ -24,7 +29,7 @@ const CartTotals = ({ order }: { order: Order }) => {
                     >
                         {convertToLocale({
                             amount: cartTotal ?? 0,
-                            currency_code: "usd",
+                            currency_code: currencyCode,
                         })}
                     </span>
                 </div>
@@ -36,7 +41,7 @@ const CartTotals = ({ order }: { order: Order }) => {
                     >
                         {convertToLocale({
                             amount: shippingSubtotal ?? 0,
-                            currency_code: "usd",
+                            currency_code: currencyCode,
                         })}
                     </span>
                 </div>
@@ -45,7 +50,7 @@ const CartTotals = ({ order }: { order: Order }) => {
                     <span data-testid="cart-taxes" data-value={taxTotal || 0}>
                         {convertToLocale({
                             amount: taxTotal ?? 0,
-                            currency_code: "usd",
+                            currency_code: currencyCode,
                         })}
                     </span>
                 </div>
@@ -60,7 +65,7 @@ const CartTotals = ({ order }: { order: Order }) => {
                 >
                     {convertToLocale({
                         amount: cartTotal ?? 0,
-                        currency_code: "usd",
+                        currency_code: currencyCode,
                     })}
                 </span>
             </div>

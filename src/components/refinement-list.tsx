@@ -1,11 +1,10 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
-
 import type { SortOptions } from "@/utils/sort-options";
 
 import SortProducts from "@/utils/sort-options";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
 
 type RefinementListProps = {
     "data-testid"?: string;

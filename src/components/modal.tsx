@@ -1,8 +1,8 @@
+import { ModalProvider, useModal } from "@/context/modal-context";
 import { Dialog, Transition } from "@headlessui/react";
 import { clx } from "@medusajs/ui";
 import React, { Fragment } from "react";
 
-import { ModalProvider, useModal } from "@/context/modal-context";
 import X from "./icons/x";
 
 type ModalProps = {

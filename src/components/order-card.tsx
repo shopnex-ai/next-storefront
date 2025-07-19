@@ -1,10 +1,11 @@
 import type { Order } from "@shopnex/types";
 
+import { isExpandedDoc } from "@/utils/is-expanded-doc";
+import { convertToLocale } from "@/utils/money";
 import { Button } from "@medusajs/ui";
 import Link from "next/link";
 import { useMemo } from "react";
 
-import { convertToLocale } from "@/utils/money";
 import Thumbnail from "./thumbnail";
 
 type OrderCardProps = {
@@ -13,16 +14,25 @@ type OrderCardProps = {
 
 const OrderCard = ({ order }: OrderCardProps) => {
     const numberOfLines = useMemo(() => {
+        if (typeof order.cart !== "object") {
+            return null;
+        }
         return (
-            order.items?.reduce((acc: any, item: any) => {
+            order.cart?.cartItems?.reduce((acc: any, item: any) => {
                 return acc + item.quantity;
             }, 0) ?? 0
         );
     }, [order]);
 
     const numberOfProducts = useMemo(() => {
-        return order.items?.length ?? 0;
+        if (typeof order.cart !== "object") {
+            return 0;
+        }
+        return order.cart?.cartItems?.length ?? 0;
     }, [order]);
+    if (typeof order.cart !== "object") {
+        return null;
+    }
 
     return (
         <div className="bg-white flex flex-col" data-testid="order-card">
@@ -44,7 +54,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
                 }`}</span>
             </div>
             <div className="grid grid-cols-2 small:grid-cols-4 gap-4 my-4">
-                {order.items?.slice(0, 3).map((i: any) => {
+                {order.cart?.cartItems?.slice(0, 3).map((i: any) => {
                     return (
                         <div
                             className="flex flex-col gap-y-2"

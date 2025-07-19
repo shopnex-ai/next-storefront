@@ -1,9 +1,9 @@
 "use client";
 
+import { Card, CardContent } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { useState } from "react";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { AddressForm } from "./address-form";
 import { DeliveryForm } from "./delivery-form";
 import { OrderSummery } from "./order-summary";
@@ -12,6 +12,7 @@ import { Review } from "./review";
 
 interface CheckoutData {
     delivery: {
+        cost: number;
         method: string;
     };
     payment: {
@@ -51,6 +52,7 @@ export default function CheckoutPage() {
     const [currentStep, setCurrentStep] = useState(1);
     const [checkoutData, setCheckoutData] = useState<CheckoutData>({
         delivery: {
+            cost: 0,
             method: "standard",
         },
         payment: {
@@ -177,8 +179,8 @@ export default function CheckoutPage() {
                                                 currentStep >= step.id
                                                     ? "bg-black border-black text-white"
                                                     : currentStep === step.id
-                                                    ? "border-black text-black"
-                                                    : "border-gray-300 text-gray-300"
+                                                      ? "border-black text-black"
+                                                      : "border-gray-300 text-gray-300"
                                             }`}
                                         >
                                             {currentStep > step.id ? (

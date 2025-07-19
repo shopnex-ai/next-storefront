@@ -1,10 +1,9 @@
 "use client";
 
-import { clx, Table } from "@medusajs/ui";
-import { Fragment } from "react";
-
 import Item from "@/components/item";
 import repeat from "@/utils/repeat";
+import { clx, Table } from "@medusajs/ui";
+import { Fragment } from "react";
 
 type ItemsTemplateProps = {
     cart: any;

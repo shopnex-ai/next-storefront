@@ -1,11 +1,12 @@
 "use client";
 
+import { convertToLocale } from "@/utils/money";
 import { Badge, Heading, Input, Label, Text } from "@medusajs/ui";
 import React, { useActionState } from "react";
-import { SubmitButton } from "./submit-button";
-import ErrorMessage from "./error-message";
+
 import Trash from "../icons/trash";
-import { convertToLocale } from "@/utils/money";
+import ErrorMessage from "./error-message";
+import { SubmitButton } from "./submit-button";
 
 type DiscountCodeProps = {
     cart: {
@@ -18,10 +19,9 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
 
     const { items = [], promotions = [] } = cart;
     const removePromotionCode = async (code: string) => {
-        const validPromotions = promotions.filter(
-            (promotion) => promotion.code !== code
-        );
-
+        // const validPromotions = promotions.filter(
+        //     (promotion) => promotion.code !== code
+        // );
         // await applyPromotions(
         //     validPromotions
         //         .filter((p) => p.code === undefined)

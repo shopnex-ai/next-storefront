@@ -2,12 +2,11 @@
 
 import type { GiftCard } from "@shopnex/types";
 
+import CartTotals from "@/components/cart-totals";
 import { Button, Divider, Heading } from "@medusajs/ui";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { useCart } from "react-use-cart";
-
-import CartTotals from "@/components/cart-totals";
 
 const Summary = () => {
     const [isPending, startTransition] = useTransition();

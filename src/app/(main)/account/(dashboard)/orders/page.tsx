@@ -3,9 +3,7 @@ import type { Metadata } from "next";
 import Divider from "@/components/divider";
 import OrderOverview from "@/components/order-overview";
 import { getOrders } from "@/services/orders";
-import config from "@payload-config";
 import { notFound } from "next/navigation";
-import { getPayload } from "payload";
 
 export const metadata: Metadata = {
     description: "Overview of your previous orders.",

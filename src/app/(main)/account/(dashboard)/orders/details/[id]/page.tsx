@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 
 import OrderDetailsTemplate from "@/templates/order-details";
-import config from "@payload-config";
-import { notFound } from "next/navigation";
-import { getPayload } from "payload";
 import { payloadSdk } from "@/utils/payload-sdk";
+import { notFound } from "next/navigation";
 
 type Props = {
     params: Promise<{ id: string }>;

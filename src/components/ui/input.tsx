@@ -1,6 +1,9 @@
+import { cn } from "@/utils";
+import { Eye } from "@medusajs/icons";
+import { EyeOff } from "lucide-react";
 import * as React from "react";
 
-import { cn } from "@/utils";
+import { Label } from "./label";
 
 type InputProps = {
     errors?: Record<string, unknown>;

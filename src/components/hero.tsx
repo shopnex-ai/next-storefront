@@ -1,10 +1,8 @@
-import type { HeroSection } from "@shopnex/types";
-
 import { Button, Heading } from "@medusajs/ui";
 import Link from "next/link";
 
 type HeroProps = {
-    hero: HeroSection["type"][0];
+    hero: any;
 };
 
 const Hero = ({ hero }: HeroProps) => {
@@ -41,9 +39,9 @@ const Hero = ({ hero }: HeroProps) => {
                         {hero?.subtitle}
                     </Heading>
                 </span>
-                <Link href={(hero as any)?.ctaButtonLink || "/"}>
+                <Link href={hero?.ctaButtonLink || "/"}>
                     <Button size="large" variant="secondary">
-                        {(hero as any)?.ctaButtonText}
+                        {hero?.ctaButtonText}
                     </Button>
                 </Link>
             </div>

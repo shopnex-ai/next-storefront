@@ -1,16 +1,10 @@
-import type { StoreSetting } from "@shopnex/types";
-
+import CartButton from "@/components/cart-button";
 import Link from "next/link";
 import { Suspense } from "react";
 
-import CartButton from "@/components/cart-button";
 import SideMenu from "./side-menu";
 
-export default function Nav({
-    storeSettings,
-}: {
-    storeSettings: StoreSetting;
-}) {
+export default function Nav({ storeSettings }: { storeSettings: any }) {
     return (
         <div className="sticky top-0 inset-x-0 z-50 group">
             <header className="relative h-16 mx-auto border-b duration-200 bg-white border-ui-border-base">
