@@ -15,7 +15,7 @@ const Summary = () => {
     const router = useRouter();
 
     const handleClick = () => {
-        router.push("/checkout");
+        router.push("/checkout/address");
     };
 
     const applyPromotion = async (code: string) => {

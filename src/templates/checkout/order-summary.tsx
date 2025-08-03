@@ -1,3 +1,5 @@
+"use client";
+
 import type { Item } from "react-use-cart";
 
 import { Button } from "@/components/ui/button";
@@ -5,22 +7,42 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Info } from "lucide-react";
 import { useCart } from "react-use-cart";
-
-interface CheckoutData {
-    delivery: {
-        cost: number;
-    };
-}
+import { useEffect, useState } from "react";
+import { payloadSdk } from "@/utils/payload-sdk";
 
 export const OrderSummery = ({
-    checkoutData,
+    selectedMethod,
 }: {
-    checkoutData: CheckoutData;
+    selectedMethod: string;
 }) => {
-    const { cartTotal, items } = useCart();
+    const { cartTotal, items, metadata } = useCart();
+    const [shippingFee, setShippingFee] = useState(0);
 
-    const shippingCost = checkoutData.delivery?.cost || 0;
-    const total = cartTotal + shippingCost;
+    useEffect(() => {
+        const calculateShippingCost = async () => {
+            const shippingMethods = await payloadSdk.find({
+                collection: "shipping",
+                where: {
+                    enabled: {
+                        equals: true,
+                    },
+                },
+            });
+
+            const shippingMethod =
+                shippingMethods.docs.find(
+                    (method) => method.id === metadata?.shippingMethodId
+                ) || shippingMethods.docs[0];
+
+            if (!shippingMethod) {
+                return;
+            }
+
+            const shippingProvider = shippingMethod.shippingProvider?.[0];
+            setShippingFee(shippingProvider?.baseRate || 0);
+        };
+        calculateShippingCost();
+    }, [metadata]);
 
     return (
         <div className="lg:col-span-1">
@@ -87,7 +109,7 @@ export const OrderSummery = ({
                         </div>
                         <div className="flex justify-between">
                             <span>Shipping</span>
-                            <span>${shippingCost.toFixed(2)}</span>
+                            <span>${shippingFee.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between">
                             <span>Taxes</span>
@@ -99,7 +121,7 @@ export const OrderSummery = ({
 
                     <div className="flex justify-between font-semibold text-lg">
                         <span>Total</span>
-                        <span>${total.toFixed(2)}</span>
+                        <span>${(cartTotal + shippingFee).toFixed(2)}</span>
                     </div>
 
                     <Button className="text-blue-600 p-0 h-auto" variant="link">

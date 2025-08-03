@@ -1,5 +1,5 @@
 import { Checkbox, Label } from "@medusajs/ui";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 
 type CheckboxProps = {
     checked?: boolean;
@@ -7,7 +7,7 @@ type CheckboxProps = {
     id: string;
     label: string;
     name?: string;
-    onChange?: () => void;
+    onChange?: MouseEventHandler | undefined;
 };
 
 const CheckboxWithLabel: React.FC<CheckboxProps> = ({
