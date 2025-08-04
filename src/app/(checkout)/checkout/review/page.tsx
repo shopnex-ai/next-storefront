@@ -2,17 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { payloadSdk } from "@/utils/payload-sdk";
 import { Button } from "@medusajs/ui";
-import { CheckoutSession } from "@shopnex/types";
-import { getCheckoutSession } from "@/services/checkout-session";
 import { useCheckoutSession } from "@/hooks/use-checkout-session";
 
 export default function ReviewPage() {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
 
-    const { session: checkoutSession } = useCheckoutSession();
+    const { session } = useCheckoutSession();
+    const checkoutSession = session as any;
 
     const handlePlaceOrder = async () => {
         setIsLoading(true);

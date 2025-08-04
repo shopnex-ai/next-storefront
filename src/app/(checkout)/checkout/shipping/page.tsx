@@ -56,7 +56,7 @@ export default function ShippingPage() {
 
                 if (
                     data.docs?.length > 0 &&
-                    data.docs[0]?.shippingProvider?.length > 0
+                    (data.docs[0] as any)?.shippingProvider?.length > 0
                 ) {
                     const defaultMethod = `${data.docs[0].id}:0`;
                     setValue("shippingMethod", defaultMethod);

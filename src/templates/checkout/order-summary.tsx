@@ -10,11 +10,7 @@ import { useCart } from "react-use-cart";
 import { useEffect, useState } from "react";
 import { payloadSdk } from "@/utils/payload-sdk";
 
-export const OrderSummery = ({
-    selectedMethod,
-}: {
-    selectedMethod: string;
-}) => {
+export const OrderSummery = () => {
     const { cartTotal, items, metadata } = useCart();
     const [shippingFee, setShippingFee] = useState(0);
 

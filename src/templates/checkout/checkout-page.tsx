@@ -225,7 +225,7 @@ export default function CheckoutPage() {
                     </div>
 
                     {/* Order Summary */}
-                    <OrderSummery checkoutData={checkoutData} />
+                    <OrderSummery />
                 </div>
             </div>
         </div>
