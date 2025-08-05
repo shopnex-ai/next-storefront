@@ -63,19 +63,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     const status: "loggedIn" | "loggedOut" = user ? "loggedIn" : "loggedOut";
 
     const create: Create = useCallback(async (args) => {
-        const data = await fetchWithErrorHandling(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/create`,
-            {
-                body: JSON.stringify({
-                    email: args.email,
-                    password: args.password,
-                    passwordConfirm: args.passwordConfirm,
-                }),
-                credentials: "include",
-                headers: { "Content-Type": "application/json" },
-                method: "POST",
-            }
-        );
+        const data = await fetchWithErrorHandling(`/api/users/create`, {
+            body: JSON.stringify({
+                email: args.email,
+                password: args.password,
+                passwordConfirm: args.passwordConfirm,
+            }),
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+        });
         if (data.errors) {
             throw new Error(data.errors[0]?.message || "Unknown error");
         }
@@ -83,18 +80,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }, []);
 
     const login: Login = useCallback(async (args) => {
-        const data = await fetchWithErrorHandling(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/login`,
-            {
-                body: JSON.stringify({
-                    email: args.email,
-                    password: args.password,
-                }),
-                credentials: "include",
-                headers: { "Content-Type": "application/json" },
-                method: "POST",
-            }
-        );
+        const data = await fetchWithErrorHandling(`/api/users/login`, {
+            body: JSON.stringify({
+                email: args.email,
+                password: args.password,
+            }),
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+        });
         if (data.errors) {
             throw new Error(data.errors[0]?.message || "Unknown error");
         }
@@ -104,7 +98,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
     const updateUser = useCallback(async (updates: Partial<User>) => {
         const data = await fetchWithErrorHandling(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/update/${updates?.id}`,
+            `/api/users/update/${updates?.id}`,
             {
                 body: JSON.stringify(updates),
                 credentials: "include",
@@ -119,21 +113,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }, []);
 
     const logout: Logout = useCallback(async () => {
-        const data = await fetchWithErrorHandling(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/logout`,
-            {
-                credentials: "include",
-                headers: { "Content-Type": "application/json" },
-                method: "POST",
-            }
-        );
+        const data = await fetchWithErrorHandling(`/api/users/logout`, {
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+        });
         // You might check for specific data response if needed.
         setUser(null);
     }, []);
 
     const forgotPassword: ForgotPassword = useCallback(async (args) => {
         const data = await fetchWithErrorHandling(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/forgot-password`,
+            `/api/users/forgot-password`,
             {
                 body: JSON.stringify({ email: args.email }),
                 credentials: "include",
@@ -149,19 +140,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }, []);
 
     const resetPassword: ResetPassword = useCallback(async (args) => {
-        const data = await fetchWithErrorHandling(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/reset-password`,
-            {
-                body: JSON.stringify({
-                    password: args.password,
-                    passwordConfirm: args.passwordConfirm,
-                    token: args.token,
-                }),
-                credentials: "include",
-                headers: { "Content-Type": "application/json" },
-                method: "POST",
-            }
-        );
+        const data = await fetchWithErrorHandling(`/api/users/reset-password`, {
+            body: JSON.stringify({
+                password: args.password,
+                passwordConfirm: args.passwordConfirm,
+                token: args.token,
+            }),
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+        });
         if (data.errors) {
             throw new Error(data.errors[0]?.message || "Unknown error");
         }
@@ -174,14 +162,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
         const fetchMe = async () => {
             try {
-                const data = await fetchWithErrorHandling(
-                    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/me`,
-                    {
-                        credentials: "include",
-                        headers: { "Content-Type": "application/json" },
-                        method: "GET",
-                    }
-                );
+                const data = await fetchWithErrorHandling(`/api/users/me`, {
+                    credentials: "include",
+                    headers: { "Content-Type": "application/json" },
+                    method: "GET",
+                });
                 if (isMounted) {
                     setUser(data.user || null);
                 }
