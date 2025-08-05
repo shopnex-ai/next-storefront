@@ -1,4 +1,5 @@
 import { ShopNexIcon } from "@/components/icons/shopnex-icon";
+import { StyledRichText } from "@/components/styled-rich-text";
 import { payloadSdk } from "@/utils/payload-sdk";
 import { clx } from "@medusajs/ui";
 import Link from "next/link";
@@ -8,12 +9,15 @@ export default async function Footer({
 }: {
     storeSettings: any;
 }) {
-    // const footer = await payloadSdk.findGlobal({
-    //     slug: "footer",
-    // });
-    // const basicFooter = footer.type?.find(
-    //     (f) => f.blockType === "basic-footer"
-    // );
+    const footerResult = await payloadSdk.find({
+        collection: "footer-page",
+    });
+
+    const footer = footerResult.docs?.[0];
+
+    const basicFooter = footer?.type?.find(
+        (f) => f.blockType === "basic-footer"
+    );
 
     const collectionsPayload = await payloadSdk.find({
         collection: "collections",
@@ -26,7 +30,7 @@ export default async function Footer({
     return (
         <footer className="border-t border-ui-border-base w-full">
             <div className="content-container flex flex-col w-full">
-                <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
+                <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-20">
                     <div>
                         <Link
                             className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
@@ -100,37 +104,29 @@ export default async function Footer({
                         </div>
                     </div>
                 </div>
-                <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
-                    <div className="txt-compact-small">
-                        {/* <StyledRichText
-                            data={basicFooter?.copyright}
-                            properties={{
-                                dateYear: new Date().getFullYear(),
-                                storeName: storeSettings?.name || "",
-                            }}
-                        /> */}
+                {footer && (
+                    <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
+                        <p className="font-normal font-sans txt-medium txt-compact-small">
+                            <StyledRichText
+                                data={basicFooter?.copyright}
+                                properties={{
+                                    dateYear: new Date().getFullYear(),
+                                    storeName: storeSettings?.name || "",
+                                }}
+                            />
+                        </p>
+                        <div className="flex gap-x-2 txt-compact-small-plus items-center">
+                            <Link
+                                className="font-normal font-sans txt-medium flex gap-x-2 txt-compact-small-plus items-center"
+                                href="https://github.com/shopnex-ai/shopnex"
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                Powered by <ShopNexIcon fill="#9ca3af" />
+                            </Link>
+                        </div>
                     </div>
-                    <div className="flex gap-x-2 txt-compact-small-plus items-center">
-                        {/* <StyledRichText data={basicFooter?.poweredBy} /> */}
-                        <Link
-                            className="-mr-1"
-                            href="https://shoplyjs.com"
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            <ShopNexIcon fill="#9ca3af" />
-                        </Link>
-                        {/* &{" "}
-                        <Link
-                            className="size-4"
-                            href="https://payloadcms.com/"
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            <PayloadIcon fill="#9ca3af" />
-                        </Link> */}
-                    </div>
-                </div>
+                )}
             </div>
         </footer>
     );

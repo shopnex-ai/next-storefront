@@ -13,10 +13,11 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-    // const heroSection = await payloadSdk.findGlobal({
-    //     slug: "hero-section",
-    // });
-    // const hero = heroSection.type?.find((f) => f.blockType === "hero");
+    const heroSectionResult = await payloadSdk.find({
+        collection: "hero-page",
+    });
+    const heroSection = heroSectionResult.docs?.[0];
+    const hero = heroSection?.type?.find((f) => f.blockType === "hero");
 
     let featuredCollections = await payloadSdk.find({
         collection: "collections",
@@ -25,7 +26,7 @@ export default async function HomePage() {
     });
     return (
         <>
-            {/* <Hero hero={hero as any} /> */}
+            {heroSection && <Hero hero={hero as any} />}
             <div className="py-12">
                 <ul className="flex flex-col gap-x-6">
                     <FeaturedProducts collections={featuredCollections.docs} />
