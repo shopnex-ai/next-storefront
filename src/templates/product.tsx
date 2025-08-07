@@ -10,6 +10,7 @@ import ImageGallery from "@/components/products/image-gallery/image-gallary";
 import ProductActions from "@/components/products/product-actions/product-actions";
 import ProductTabs from "@/components/products/product-tabs/product-tabs";
 import ProductInfo from "./product-info";
+import { getVariantImage } from "@/utils/get-variant-image";
 
 type ProductTemplateProps = {
     product: Product;
@@ -40,7 +41,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
                     <ProductTabs product={product} />
                 </div>
                 <div className="block w-full relative">
-                    <ImageGallery thumbnail={selectedVariant.imageUrl} />
+                    <ImageGallery
+                        thumbnail={getVariantImage(selectedVariant)}
+                    />
                 </div>
                 <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-12">
                     <ProductActions

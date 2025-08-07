@@ -1,4 +1,3 @@
-import { mapProducts } from "@/utils/map-products";
 import { payloadSdk } from "@/utils/payload-sdk";
 import { Text } from "@medusajs/ui";
 
@@ -17,8 +16,6 @@ export default async function ProductRail({ collection }: { collection: any }) {
         },
     });
 
-    const pricedProducts = mapProducts(products.docs);
-
     return (
         <div className="content-container py-12 small:py-24">
             <div className="flex justify-between mb-8">
@@ -28,7 +25,7 @@ export default async function ProductRail({ collection }: { collection: any }) {
                 </InteractiveLink>
             </div>
             <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-24 small:gap-y-36">
-                {pricedProducts.map((product) => (
+                {products.docs.map((product) => (
                     <li key={product.id}>
                         <ProductPreview isFeatured product={product} />
                     </li>

@@ -9,22 +9,18 @@ type ThumbnailProps = {
     className?: string;
     "data-testid"?: string;
     // TODO: Fix image typings
-    images?: any[] | null;
     isFeatured?: boolean;
     size?: "full" | "large" | "medium" | "small" | "square";
-    thumbnail?: null | string;
+    thumbnail?: string;
 };
 
 const Thumbnail: React.FC<ThumbnailProps> = ({
     className,
     "data-testid": dataTestid,
-    images,
     isFeatured,
     size = "small",
     thumbnail,
 }) => {
-    const initialImage = thumbnail || images?.[0]?.url;
-
     return (
         <Container
             className={clx(
@@ -42,7 +38,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
             )}
             data-testid={dataTestid}
         >
-            <ImageOrPlaceholder image={initialImage} size={size} />
+            <ImageOrPlaceholder image={thumbnail} size={size} />
         </Container>
     );
 };

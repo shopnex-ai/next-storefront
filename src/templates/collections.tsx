@@ -5,13 +5,14 @@ import type { SortOptions } from "@/utils/sort-options";
 import RefinementList from "@/components/refinement-list";
 import SkeletonProductGrid from "@/components/skeleton-product-grid";
 import PaginatedProducts from "./paginated-product";
+import { Collection } from "@shopnex/types";
 
 export default function CollectionTemplate({
     collection,
     page,
     sortBy,
 }: {
-    collection: any;
+    collection: Collection;
     page?: string;
     sortBy?: SortOptions;
 }) {
@@ -35,7 +36,7 @@ export default function CollectionTemplate({
                     <PaginatedProducts
                         collectionId={collection.id}
                         page={pageNumber}
-                        products={collection.products}
+                        products={collection.products?.docs}
                         sortBy={sort}
                     />
                 </Suspense>

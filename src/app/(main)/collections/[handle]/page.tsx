@@ -2,7 +2,6 @@ import type { SortOptions } from "@/utils/sort-options";
 
 import CollectionTemplate from "@/templates/collections";
 import { notFound } from "next/navigation";
-import { mapProducts } from "@/utils/map-products";
 import { payloadSdk } from "@/utils/payload-sdk";
 
 type Props = {
@@ -26,21 +25,10 @@ export default async function CollectionPage(props: Props) {
                 equals: params.handle,
             },
         },
+        depth: 10,
     });
 
     const collection = collectionData.docs[0];
-
-    const products = await payloadSdk.find({
-        collection: "products",
-        sort: "createdAt",
-        where: {
-            collections: {
-                equals: collection.id,
-            },
-        },
-    });
-
-    collection.products = mapProducts(products.docs) as any;
 
     if (!collection) {
         notFound();

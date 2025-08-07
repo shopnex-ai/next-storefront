@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 
 import Thumbnail from "./thumbnail";
+import { getVariantImage } from "@/utils/get-variant-image";
 
 type OrderCardProps = {
     order: Order;
@@ -62,12 +63,10 @@ const OrderCard = ({ order }: OrderCardProps) => {
                             key={i.id}
                         >
                             <Thumbnail
-                                images={[]}
                                 size="full"
-                                thumbnail={
-                                    i.product?.variants[0]?.imageUrl ||
-                                    i.product?.variants[0]?.gallery?.[0]?.url
-                                }
+                                thumbnail={getVariantImage(
+                                    i.product?.variants[0]
+                                )}
                             />
                             <div className="flex items-center text-small-regular text-ui-fg-base">
                                 <span

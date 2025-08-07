@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import ProductTemplate from "@/templates/product";
-import { mapProducts } from "@/utils/map-products";
 import { notFound } from "next/navigation";
 import { payloadSdk } from "@/utils/payload-sdk";
 
@@ -50,13 +49,9 @@ export default async function ProductPage(props: ProductPageProps) {
         },
     });
 
-    const mappedProducts = mapProducts(product.docs);
-
-    const pricedProduct = mappedProducts[0];
-
-    if (!pricedProduct) {
+    if (!product.docs.length) {
         notFound();
     }
 
-    return <ProductTemplate product={pricedProduct} />;
+    return <ProductTemplate product={product.docs[0]} />;
 }

@@ -3,23 +3,30 @@ import Link from "next/link";
 
 import PreviewPrice from "./price";
 import Thumbnail from "./thumbnail";
+import { Product } from "@shopnex/types";
+import { getVariantImage } from "@/utils/get-variant-image";
 
 export default function ProductPreview({
     isFeatured,
     product,
 }: {
     isFeatured?: boolean;
-    product: any;
+    product: Product;
 }) {
     const { originalPrice, price } = product.variants?.[0] || {};
+    const variantWithImage = product.variants?.find((v) => {
+        return getVariantImage(v);
+    });
+    const thumbnail = getVariantImage(
+        variantWithImage as Product["variants"][0]
+    );
     return (
         <Link className="group" href={`/products/${product.handle}`}>
             <div data-testid="product-wrapper">
                 <Thumbnail
-                    images={product.images}
                     isFeatured={isFeatured}
                     size="full"
-                    thumbnail={product.variants[0]?.imageUrl}
+                    thumbnail={thumbnail}
                 />
                 <div className="flex txt-compact-medium mt-4 justify-between">
                     <Text

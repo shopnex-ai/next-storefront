@@ -21,7 +21,7 @@ export default function PaginatedProducts({
     productsIds,
     sortBy,
 }: {
-    collectionId?: string;
+    collectionId?: number;
     page: number;
     products: Product[];
     productsIds?: string[];
@@ -32,7 +32,7 @@ export default function PaginatedProducts({
     };
 
     if (collectionId) {
-        queryParams["collection_id"] = [collectionId];
+        queryParams["collection_id"] = [String(collectionId)];
     }
 
     if (productsIds) {
